@@ -1,0 +1,8 @@
+<!--Création d'une balise qui affichera un paragraphe pour chaque item-->
+<ul *ngFor="let personne of personnes">
+  <!--personne qui ne sera affiché que s'il contient 'a'-->
+    <!--On fait appel à la methode 'includes()' de javascript directement dans le ngIf-->
+  <li *ngIf="personne.includes('a')">
+    {{personne}}
+  </li>
+</ul>
