@@ -1,0 +1,29 @@
+<!--
+  Utilisation de *ngFor pour stocker chaque itération de users dans user. On sotck aussi le fait que le nombre soit impair
+-->
+<div *ngFor="let user of users; let isOdd = odd">
+<!--
+    Si l'index est impair, alors on l'affiche.
+    Il ne faut pas oublier que les ID commencent à 1, alors que l'index commence à 0 !
+  -->
+  <!-- <div class="container" *ngIf="user.id % 2 == 0"> -->
+    <!-- autre methode -->
+    <div class="container" *ngIf="isOdd">
+    <div class="background">
+      <div class="card-header">
+        {{user.company.name}}
+      </div>
+      <div class="card">
+        <div class="name">
+          {{user.name}}
+        </div>
+        <div class="info">
+          <p>Site : {{user.website}}</p>
+          <p>email: {{user.email}} </p>
+          <p>Téléphone : {{user.phone}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
