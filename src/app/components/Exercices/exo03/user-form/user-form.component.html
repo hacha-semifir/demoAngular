@@ -1,4 +1,3 @@
-<!-- Affichage de la carte -->
 <div class="'container" *ngFor="let user of users">
   <div class="background">
     <div class="card-header">
@@ -10,16 +9,13 @@
         </div>
         <div class="info">
           <p>email : {{ user.email }}</p>
-          <p>Tel : {{ user.telephone }}</p>
+          <p *ngFor="let telephone of user.telephones">Tel : {{ telephone }}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
 <div>
-<!-- Ajout du formulaire et déclaration du groupe + submit -->
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="nom">Nom : </label>
@@ -29,7 +25,6 @@
       formControlName="nom"
       placeholder="Nom"
     />
-    <!-- Message conditionnel à afficher : -->
     <span *ngIf="submitted && form['nom'].invalid">
       <span *ngIf="form['nom'].hasError('minlength')">
         * Nom doit contenir au minimum 2 caractères
@@ -39,7 +34,6 @@
       </span>
     </span>
   </div>
-<!-- Et après c'est tout pareil partout ! -->
   <div>
     <label for="prenom">Prenom : </label>
     <input
@@ -92,22 +86,34 @@
       </span>
     </span>
   </div>
-  <div>
-    <label for="telephone">Telephone : </label>
-    <input
-      type="tel"
-      id="telephone"
-      formControlName="telephone"
-      placeholder="Telephone"
-    />
-    <span *ngIf="submitted && form['telephone'].invalid">
-      <span *ngIf="form['telephone'].hasError('minlength')">
-        * Telephone doit contenir au moins 10 chiffres
+  <!-- On commence par ajouter une div supplémentaire pour enrober le tout -->
+  <!--  On déclare la form array -->
+  <div formArrayName="telephones">
+      <!-- On indique qu'on va vouloir ajouter un champs par control de téléphone-->
+    <div *ngFor="let telephone of telephones.controls; let i = index">
+      <label for="telephone">Telephone : </label>
+      <!-- On utilise le propertybinding pour faire la liaison entre le champs et le téléphone -->
+      <!-- [formControlName]="i" : On lui passe l'index du champs pour qu'il puisse faire le lien -->
+      <input
+        type="tel"
+        id="telephone"
+        [formControlName]="i"
+        placeholder="Telephone"
+      />
+      <!-- On laisse les conditions -->
+      <span *ngIf="submitted && telephone.invalid">
+        <span *ngIf="telephone.hasError('minlength')">
+          * Telephone doit contenir au moins 10 chiffres
+        </span>
+        <span *ngIf="!telephone.value">
+          * Téléphone obligatoire
+        </span>
       </span>
-      <span *ngIf="!form['telephone'].value">
-        * Téléphone obligatoire
-      </span>
-    </span>
+    </div>
+    <!-- On ajout à la fin 2 bouttons, qui vont chercher nos méthodes d'ajout et de supperssion de champ -->
+    <button type="button" (click)="addTelephone()">+</button>
+    <!-- On fait attention à bien activer la suppression que si nécessaire ! -->
+    <button *ngIf="telephones.length > 1" type="button" (click)="removeTelephone()">-</button>
   </div>
   <div>
     <button type="submit">Envoyer</button>
