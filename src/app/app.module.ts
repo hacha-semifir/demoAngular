@@ -1,7 +1,7 @@
 // Imports des modules d'angular
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,8 @@ import { GenericAlertButtonComponent } from './components/generic-alert-button/g
 import { ButtonMenuComponent } from './components/button-menu/button-menu.component';
 import { HorlogeComponent } from './components/Exercices/exo02/horloge/horloge.component';
 import { ClockMenuComponent } from './components/Exercices/exo02/clock-menu/clock-menu.component';
+import { ListeCoursesComponent } from './components/liste-courses/liste-courses.component';
+import { ReactiveListeCoursesComponent } from './components/reactive-liste-courses/reactive-liste-courses.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +38,16 @@ import { ClockMenuComponent } from './components/Exercices/exo02/clock-menu/cloc
     GenericAlertButtonComponent,
     ButtonMenuComponent,
     HorlogeComponent,
-    ClockMenuComponent
+    ClockMenuComponent,
+    ListeCoursesComponent,
+    ReactiveListeCoursesComponent
   ],
   //// on déclarera ici les modules à importer
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
