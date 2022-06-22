@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-liste-courses',
@@ -13,8 +13,8 @@ export class ReactiveListeCoursesComponent implements OnInit {
   articles: any[] = [];
   constructor() {
     this.article= new FormGroup({
-      designation: new FormControl(''),
-      prix: new FormControl('')
+      designation: new FormControl('', Validators.required),
+      prix: new FormControl('', Validators.required)
     });
    }
 
@@ -28,6 +28,6 @@ export class ReactiveListeCoursesComponent implements OnInit {
   }
 
   get totalPrice(): number {
-    return this.articles.reduce((total, article)=> total + article.prix, 0 )
+    return this.articles.reduce((total, article) => total + article.prix, 0 )
   }
 }

@@ -21,6 +21,8 @@ import { HorlogeComponent } from './components/Exercices/exo02/horloge/horloge.c
 import { ClockMenuComponent } from './components/Exercices/exo02/clock-menu/clock-menu.component';
 import { ListeCoursesComponent } from './components/liste-courses/liste-courses.component';
 import { ReactiveListeCoursesComponent } from './components/reactive-liste-courses/reactive-liste-courses.component';
+import { FormbuilderListeCoursesComponent } from './components/formbuilder-liste-courses/formbuilder-liste-courses.component';
+import { UserFormComponent } from './components/Exercices/exo03/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ReactiveListeCoursesComponent } from './components/reactive-liste-cours
     HorlogeComponent,
     ClockMenuComponent,
     ListeCoursesComponent,
-    ReactiveListeCoursesComponent
+    ReactiveListeCoursesComponent,
+    FormbuilderListeCoursesComponent,
+    UserFormComponent
   ],
   //// on déclarera ici les modules à importer
   imports: [

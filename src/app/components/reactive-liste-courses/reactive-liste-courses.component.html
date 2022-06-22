@@ -10,12 +10,12 @@ Total : {{totalPrice}}
 <form [formGroup]="article" (ngSubmit)="addArticle()">
   <label>
     Désignation:
-    <input type="text" formControlName="designation">
+    <input type="password" formControlName="designation" >
   </label>
   <label >
     Prix:
     <input type="number" formControlName="prix">
   </label>
-  <button type="submit">Ajouter</button>
+  <button type="submit" [disabled]="!article.valid">Ajouter</button>
 </form>
 
